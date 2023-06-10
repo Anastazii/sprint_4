@@ -25,6 +25,8 @@ class TestOrders:
         continuation_of_the_order.input_date()
         continuation_of_the_order.input_other()
         continuation_of_the_order.order_confirmation()
+        text = driver.find_element(By.CSS_SELECTOR, "div.App_App__15LM- div.Order_Content__bmtHS " "div.Order_Modal__YZ-d3 div.Order_NextButton__1_rCA > ""button.Button_Button__ra12g.Button_Middle__1CSJM").text
+        assert text == "Посмотреть статус"
         continuation_of_the_order.view_status()
         link = Links(driver)
         link.links_scooter()
@@ -51,6 +53,8 @@ class TestOrders:
         continuation_of_the_order.input_date()
         continuation_of_the_order.input_other()
         continuation_of_the_order.order_confirmation()
+        text = driver.find_element(By.CSS_SELECTOR, "div.App_App__15LM- div.Order_Content__bmtHS " "div.Order_Modal__YZ-d3 div.Order_NextButton__1_rCA > ""button.Button_Button__ra12g.Button_Middle__1CSJM").text
+        assert text == "Посмотреть статус"
         continuation_of_the_order.view_status()
         link = Links(driver)
         link.links_scooter()
