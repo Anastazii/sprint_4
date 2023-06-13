@@ -7,7 +7,7 @@ from pages.base_page import BasePage
 class About_Rent(BasePage):
     @allure.step('Заполняем дату и срок аренды')
     def input_date(self):
-        self.find_element(Locators.LOCATOR_DATE_ENTRY_FIELD).send_keys('14.06.2023')
+        self.find_element(Locators.LOCATOR_DATE_ENTRY_FIELD).send_keys('16.06.2023')
         self.find_element(Locators.LOCATOR_DATE_CONFIRMATION).click()
         self.find_element(Locators.LOCATOR_RENTAL_PERIOD_BUTTON).click()
         self.find_element(Locators.LOCATOR_RENTAL_PERIOD_CHOICE).click()

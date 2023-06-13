@@ -25,24 +25,14 @@ class TestOrders:
         continuation_of_the_order.input_date()
         continuation_of_the_order.input_other()
         continuation_of_the_order.order_confirmation()
-        text = driver.find_element(By.CSS_SELECTOR, "div.App_App__15LM- div.Order_Content__bmtHS " "div.Order_Modal__YZ-d3 div.Order_NextButton__1_rCA > ""button.Button_Button__ra12g.Button_Middle__1CSJM").text
+        text = driver.find_element(*Locators.LOCATOR_VIEW_STATUS).text
         assert text == "Посмотреть статус"
-        continuation_of_the_order.view_status()
-        link = Links(driver)
-        link.links_scooter()
-        url = driver.current_url
-        assert url == 'https://qa-scooter.praktikum-services.ru/'
-        link.links_yandex()
-        WebDriverWait(driver, 15)
-        current_url = driver.current_url
-        assert current_url != 'https://yandex.ru/'  # проверка, что тест заведомо провальный, т.е. не переходит на страницу яндекса
 
     @allure.title('Проверка заказа с помощью нижней кнопки Заказать')
     def test_checkout_low_button(self, driver):
         main = Main_Page(driver)
         main.go_to_site()
-        element = driver.find_element(By.XPATH, "//button[@class='Button_Button__ra12g Button_Middle__1CSJM']")
-        driver.execute_script("arguments[0].scrollIntoView();", element)
+        main.scroll()
         main.click_to_order_low()
         order_form = Form_Order(driver)
         order_form.input_name()
@@ -53,14 +43,25 @@ class TestOrders:
         continuation_of_the_order.input_date()
         continuation_of_the_order.input_other()
         continuation_of_the_order.order_confirmation()
-        text = driver.find_element(By.CSS_SELECTOR, "div.App_App__15LM- div.Order_Content__bmtHS " "div.Order_Modal__YZ-d3 div.Order_NextButton__1_rCA > ""button.Button_Button__ra12g.Button_Middle__1CSJM").text
+        text = driver.find_element(*Locators.LOCATOR_VIEW_STATUS).text
         assert text == "Посмотреть статус"
-        continuation_of_the_order.view_status()
+
+    @allure.title('Проверка перехода по ссылке(самокат) через заказ')
+    def test_link_scooter(self, driver):
+        main = Main_Page(driver)
+        main.go_to_site()
+        main.click_to_order_top()
         link = Links(driver)
         link.links_scooter()
         url = driver.current_url
         assert url == 'https://qa-scooter.praktikum-services.ru/'
+
+    @allure.title('Проверка перехода по ссылке(яндекс) через заказ')
+    def test_link_yandex(self, driver):
+        main = Main_Page(driver)
+        main.go_to_site()
+        main.click_to_order_top()
+        link = Links(driver)
         link.links_yandex()
-        WebDriverWait(driver, 10)
         current_url = driver.current_url
-        assert current_url != 'https://yandex.ru/'  #проверка, что тест заведомо провальный, т.е. не переходит на страницу яндекса
+        assert current_url != 'https://yandex.ru/'  # проверка, что тест заведомо провальный, т.е. не переходит на страницу яндекса

@@ -45,6 +45,16 @@ class Question(BasePage):
         self.find_element(Locators.LOCATOR_COOKIE_BUTTON).click()
         self.find_element(Locators.LOCATOR_EIGHTH_QUESTION).click()
 
+    def scroll2(self):
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+    def click_question(self, locator):
+        question = self.driver.find_element(*locator)
+        question.click()
+
+    def get_answer_text(self, locator):
+        answer = self.driver.find_element(*locator)
+        return answer.text
 
 class Main_Page(BasePage):
     @allure.step('Нажать на верхнюю кнопку Заказать')
@@ -54,4 +64,9 @@ class Main_Page(BasePage):
     @allure.step('Нажать на нижнюю кнопку Заказать')
     def click_to_order_low(self):
         self.find_element(Locators.LOCATOR_LOW_ORDER_BUTTON).click()
+
+    def scroll(self):
+        element = self.find_element(Locators.LOCATOR_LOW_ORDER_BUTTON)
+        self.driver.execute_script("arguments[0].scrollIntoView();", element)
+
 
