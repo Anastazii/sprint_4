@@ -3,3 +3,5 @@
 geckodriver.log
 __pycache__
 vevn
+test/__pycache__
+pages/__pycache__
