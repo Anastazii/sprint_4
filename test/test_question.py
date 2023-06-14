@@ -2,7 +2,7 @@ import allure
 import pytest
 
 from locators import Locators
-from pages.main_page import Question
+from pages.base_page import BasePage
 
 
 class TestQuestions1:
@@ -19,7 +19,7 @@ class TestQuestions1:
 
     @allure.title("Проверка вопросов")
     def test_question(self, driver, question_locator, answer_locator, expected_answer):
-        question = Question(driver)
+        question = BasePage(driver)
         question.go_to_site()
         question.scroll2()
         question.click_question(question_locator)

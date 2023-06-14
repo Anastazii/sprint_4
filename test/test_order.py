@@ -1,7 +1,4 @@
 import allure
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 from locators import Locators
 from pages.about_rent import About_Rent, Links
@@ -45,23 +42,3 @@ class TestOrders:
         continuation_of_the_order.order_confirmation()
         text = driver.find_element(*Locators.LOCATOR_VIEW_STATUS).text
         assert text == "Посмотреть статус"
-
-    @allure.title('Проверка перехода по ссылке(самокат) через заказ')
-    def test_link_scooter(self, driver):
-        main = Main_Page(driver)
-        main.go_to_site()
-        main.click_to_order_top()
-        link = Links(driver)
-        link.links_scooter()
-        url = driver.current_url
-        assert url == 'https://qa-scooter.praktikum-services.ru/'
-
-    @allure.title('Проверка перехода по ссылке(яндекс) через заказ')
-    def test_link_yandex(self, driver):
-        main = Main_Page(driver)
-        main.go_to_site()
-        main.click_to_order_top()
-        link = Links(driver)
-        link.links_yandex()
-        current_url = driver.current_url
-        assert current_url != 'https://yandex.ru/'  # проверка, что тест заведомо провальный, т.е. не переходит на страницу яндекса

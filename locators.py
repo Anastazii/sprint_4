@@ -21,7 +21,7 @@ class Locators:
     LOCATOR_PHONE = (By.XPATH, "//input[@placeholder='* Телефон: на него позвонит курьер']")  # Поле для ввода телефона
     LOCATOR_FURTHER_BUTTON = (By.XPATH, "//button[@class='Button_Button__ra12g Button_Middle__1CSJM']")  # Кнопка продолжить
     LOCATOR_DATE_ENTRY_FIELD = (By.XPATH, "//div[@class='react-datepicker__input-container']//input[@type='text']")  # Поле для ввода даты
-    LOCATOR_DATE_CONFIRMATION = (By.CSS_SELECTOR, "div.App_App__15LM- div.Order_Content__bmtHS " "div.Order_Form__17u6u div.Order_MixedDatePicker__3qiay " "div.react-datepicker__tab-loop div.react-datepicker-popper " "div.react-datepicker " "div.react-datepicker__month-container:nth-child(4) " "div.react-datepicker__month " "div.react-datepicker__week:nth-child(3) > " "div.react-datepicker__day.react-datepicker__day--018.react" "-datepicker__day--weekend:nth-child(7)") # Подтверждение выбранной даты
+    LOCATOR_DATE_CONFIRMATION = (By.XPATH, "//div[contains(@class,'react-datepicker__day--selected')]")  # Подтверждение выбранной даты
     LOCATOR_RENTAL_PERIOD_BUTTON = (By.CLASS_NAME, "Dropdown-control")  # Кнопка выбора периода времени катания
     LOCATOR_RENTAL_PERIOD_CHOICE = (By.CSS_SELECTOR, "div.Dropdown-option:nth-child(3)")  # Выбираем период времени
     LOCATOR_COLOR_SCOOTER = (By.CLASS_NAME, "Checkbox_Input__14A2w")  # Выбираем цвет самоката

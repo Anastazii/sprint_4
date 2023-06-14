@@ -12,3 +12,17 @@ class BasePage:
 
     def go_to_site(self):
         return self.driver.get(self.base_url)
+
+    def scroll2(self):
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+    def click_question(self, locator):
+        question = self.driver.find_element(*locator)
+        question.click()
+
+    def get_answer_text(self, locator):
+        answer = self.driver.find_element(*locator)
+        return answer.text
+
+    def scroll_to(self, element):
+        self.driver.execute_script("arguments[0].scrollIntoView();", element)
